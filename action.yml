@@ -1,0 +1,18 @@
+name: "jitpack-build"
+author: "kylecorry31"
+description: "Trigger a build for new releases on Jitpack"
+inputs:
+  version:
+    description: 'The version name to build'
+    required: true
+  timeout:
+    description: 'The timeout in seconds to wait for Jitpack to build'
+    required: false
+    default: '600'
+branding:
+  icon: "code"
+  color: "green"
+runs:
+  using: "composite"
+  steps:
+    - run: curl https://jitpack.io/com/github/${{ github.repository }}/${{ inputs.version }}/build.log -m ${{ inputs.timeout }}
