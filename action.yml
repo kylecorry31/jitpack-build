@@ -16,3 +16,4 @@ runs:
   using: "composite"
   steps:
     - run: curl https://jitpack.io/com/github/${{ github.repository }}/${{ inputs.version }}/build.log -m ${{ inputs.timeout }}
+      shell: bash
